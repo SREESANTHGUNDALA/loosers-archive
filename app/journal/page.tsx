@@ -47,18 +47,30 @@ export default function JournalPage() {
           LOOSERS ARCHIVE
         </p>
 
-        <h1
-          className="text-[52px] md:text-[90px] leading-[0.92]"
-          style={{
-            fontFamily: "serif",
-          }}
-        >
-          A WORD
-          <br />
-          FOR
-          <br />
-          TOMORROW.
-        </h1>
+        <div className="flex items-end justify-between gap-10">
+
+          <h1
+            className="text-[52px] md:text-[90px] leading-[0.92]"
+            style={{
+              fontFamily: "serif",
+            }}
+          >
+            A WORD
+            <br />
+            FOR
+            <br />
+            TOMORROW.
+          </h1>
+
+          {/* Write */}
+          <Link
+            href="/journal/write"
+            className="mb-3 border border-[#2e241d] px-6 py-3 text-xs uppercase tracking-[0.3em] hover:bg-[#2e241d] hover:text-[#f3eadf] transition"
+          >
+            Write
+          </Link>
+
+        </div>
 
       </section>
 
@@ -105,7 +117,7 @@ export default function JournalPage() {
               {journal.content.slice(0, 220)}...
             </p>
 
-            {/* Read */}
+            {/* Continue */}
             <Link
               href={`/journal/${journal.id}`}
               className="text-sm uppercase tracking-[0.25em] border-b border-[#2e241d] pb-1"
