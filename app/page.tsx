@@ -2,11 +2,32 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+import { supabase } from "./lib/supabase";
 
 export default function Home() {
 
   const [open, setOpen] = useState(false);
+
+  const router = useRouter();
+
+  // Protect Home
+  useEffect(() => {
+
+    async function checkUser() {
+
+      const { data } = await supabase.auth.getUser();
+
+      if (!data.user) {
+        router.push("/login");
+      }
+
+    }
+
+    checkUser();
+
+  }, []);
 
   return (
     <main className="min-h-screen bg-[#f5efe6] text-[#3e2f26] px-8 py-8 relative">
@@ -54,7 +75,7 @@ export default function Home() {
 
           )}
 
-          {/* Plus Button */}
+          {/* Plus */}
           <button
             onClick={() => setOpen(!open)}
             className="w-14 h-14 rounded-full bg-[#1c1917]/90 backdrop-blur-xl border border-[#2c2723] text-[#f1e6db] text-3xl hover:scale-105 transition shadow-2xl"
@@ -68,6 +89,7 @@ export default function Home() {
 
       {/* Quote */}
       <section className="mb-14">
+
         <h1 className="text-6xl leading-[1.05] max-w-4xl font-semibold tracking-tight">
           “Chase who
           <br />
@@ -77,6 +99,7 @@ export default function Home() {
         <p className="mt-4 text-[#7a685d] italic text-xl">
           ~ looser (2026)
         </p>
+
       </section>
 
       {/* Cards */}
