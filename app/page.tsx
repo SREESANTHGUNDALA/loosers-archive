@@ -198,7 +198,7 @@ export default function Home() {
               </p>
 
               <h2 className="text-4xl font-semibold mb-3">
-                A Word For Tomorrow
+                Journal
               </h2>
 
               <p className="text-sm text-white/80 leading-6">
